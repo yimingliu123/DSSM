@@ -1,6 +1,6 @@
 # DSSM: DUAL STATE SPACE MODEL FOR HUMAN MOTIONS GENERATION (icassp 2025 submitting)
 
-![teaser_image](https://github.com/yimingliu123/DSSM/training.png)
+![teaser_image](https://github.com/yimingliu123/DSSM/blob/main/training.png)
 
 We will continue to supplement and complete our code as soon as possible.
 
