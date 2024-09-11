@@ -1,0 +1,16 @@
+
+HumanKL3D:
+python train_vq.py --name rvq_name --gpu_id 1 --dataset_name t2m --batch_size 256 --num_quantizers 6  --max_epoch 50 --quantize_dropout_prob 0.2 --gamma 0.05
+===train RESmamba==
+python train_t2m_Mask_mamba_3D.py --name zhenshi_mixss_res_name  --gpu_id 3 --dataset_name t2m --batch_size 768 --vq_name rvq_nq6_dc512_nc512_noshare_qdp0.2 --cond_drop_prob 0.2 --share_weight
+
+=========train mask===
+python train_t2m_Mask_mamba_3D.py --name zhenshi_mixss_mask_name --gpu_id 3 --dataset_name t2m --batch_size 512 --vq_name rvq_nq6_dc512_nc512_noshare_qdp0.2
+
+===eval============
+python eval_t2m_resmask_mamba3D.py --res_name zhenshi_mixss_res_name --dataset_name t2m --name zhenshi_mixss_mask_name --gpu_id 3 --cond_scale 4 --time_steps 10 --ext evaluation
+
+
+KIT-ML:
+python train_res_transformer.py --name mixss_res_name  --gpu_id 2 --dataset_name kit --batch_size 32 --vq_name rvq_nq6_dc512_nc512_noshare_qdp0.2_k --cond_drop_prob 0.2 --share_weight
+python eval_kit_trans_res.py --res_name kit_mixss_HSSB  --dataset_name kit --name kit_mixss_MSSM_name --gpu_id 3 --cond_scale 2 --time_steps 10 --ext evaluation
